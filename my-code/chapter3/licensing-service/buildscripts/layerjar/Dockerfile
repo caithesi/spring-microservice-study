@@ -1,9 +1,11 @@
 #stage 1
 FROM eclipse-temurin:21 AS build
 
+ARG FINAL_JAR_NAME="app1"
+
 LABEL maintainer="Cai The Si <caithesi@gmail.com>"
 
-COPY ./target/app.jar ./app.jar
+COPY ./target/${FINAL_JAR_NAME}.jar ./app.jar
 RUN java -Djarmode=layertools -jar ./app.jar extract
 
 #stage 2
