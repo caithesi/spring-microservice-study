@@ -1,8 +1,8 @@
-## Spring Microservices in Action - Second Edition. Chapter 3
+## Spring Microservices - Do with the book Spring Microservices in Action - Second Edition.
 
 ## Introduction
 
-Code used on the 3rd Chapter of the Spring Microservices in Action - Second Edition Manning publication book. This code contains the Licensing Microservice.
+My own code from the book Spring Microservices in Action - Second Edition Manning publication book.
 
 ## Initial Configuration
 
@@ -13,25 +13,28 @@ Code used on the 3rd Chapter of the Spring Microservices in Action - Second Edit
 
 To clone and run this application, you'll need [Git](https://git-scm.com), [Maven](https://maven.apache.org/), [Java 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html). From your command line:
 
+### At local env
+i use intellj, with java and maven installed to develop, this was developed with java 21, maven 4.0.RC, but mvnw was under 3.9.6
+
+
+### run with cli
 ```bash
 # Clone this repository
-$ git clone https://github.com/ihuaylupo/manning-smia
+$ git clone ...
 
 # Go into the repository
-$ cd chapter3/licensing-service
+$ cd ...
 
 # Install dependencies
-$ mvn install
+$ ./mvnw install
 
 # Run the app
-$ mvn spring-boot:run
+$ ./mvnw spring-boot:run
 or 
 $ java -jar target/licensing-service-0.0.1-SNAPSHOT.jar
 ```
 
-## Contact
+### run with docker
+this is not encouraged when you are at local development, due to it make bad development experience
 
-I'd like you to send me an email on <illaryhs@gmail.com> about anything you'd want to say about this software.
-
-### Contributing
-Feel free to file an issue if it doesn't work for your code sample. Thanks.
+to run with docker, check folder buildscript
