@@ -38,3 +38,6 @@ $ java -jar target/licensing-service-0.0.1-SNAPSHOT.jar
 this is not encouraged when you are at local development, due to it make bad development experience
 
 to run with docker, check folder buildscript
+
+### test
+both my machines are too old, so i use python to test instead, check testing folder, read readme for more information
