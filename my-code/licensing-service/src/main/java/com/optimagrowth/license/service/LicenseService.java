@@ -3,6 +3,7 @@ package com.optimagrowth.license.service;
 import java.util.Locale;
 import java.util.Random;
 
+import com.optimagrowth.license.config.ServiceConfig;
 import com.optimagrowth.license.repository.LicenseRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,11 @@ public class LicenseService {
 	
 	private final MessageSource messages;
 	private final LicenseRepository licenseRepository;
+	private final ServiceConfig serviceConfig;
 
 	public License getLicense(String licenseId, String organizationId){
 		var license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId).get();
-
-		return license;
+		return license.withComment(serviceConfig.property());
 	}
 
 	public String createLicense(License license, String organizationId, Locale locale){
