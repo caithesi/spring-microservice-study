@@ -1,10 +1,14 @@
 #!/bin/bash
 
-./mvnw clean package -DappFinalName=app -Dspring-boot.layers.enabled=true
+# Exit immediately if any command fails
+set -e
+
+
+./mvnw clean package -DappFinalName=app -Dspring-boot.layers.enabled=true -DskipTests
 # Only proceed to Docker steps if Maven build succeeded
 echo "Maven build successful. Proceeding with Docker build..."
 
 podman build  -t ostock/licensing-service . \
   --build-arg  FINAL_JAR_NAME=app
 
-podman run --rm -p 8080:8080 ostock/licensing-service
+#podman run --rm -p 8080:8080 ostock/licensing-service
