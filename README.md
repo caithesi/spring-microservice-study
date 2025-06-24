@@ -7,8 +7,7 @@ in case run with podman, make sure
 go to
 /etc/containers/registries.conf
 
-[registries.search]
-registries = ["docker.io"]
+unqualified-search-registries = ["docker.io"]
 
 to use the same docker file
 
