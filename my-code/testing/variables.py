@@ -1,7 +1,8 @@
 import json
-def load_variables(global_variables_link = '../variables.json',
-                    workspace_variables_link = 'variables.json',
-                    local_variables = {}):
+def load_variables(workspace_variables_link,
+                   global_variables_link = 'variables.json',
+                   local_variables = {}
+                    ):
     # Load global config, then licensing (licensing overrides global)
     variables = {}
 

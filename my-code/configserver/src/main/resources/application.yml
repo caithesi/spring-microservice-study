@@ -2,7 +2,9 @@ spring:
   application:
     name: config-server
   profiles:
-    active: native #set the spring profile associated with the backend repository (file system)
+    active:
+    - native #set the spring profile associated with the backend repository (file system)
+    - vault
   cloud:
     config:
       server:
@@ -10,5 +12,16 @@ spring:
         native:
           #read from a specific file system folder
           search-locations: classpath:/config
+        vault:
+          port: 8200
+          host: ${VAULT_HOST:127.0.0.1}
+          kv-version: 2
 server:
   port: 8071
+logging:
+  level:
+    org.springframework.cloud.config.server: DEBUG
+    org.springframework.cloud.vault: DEBUG
+    org.springframework.vault: DEBUG
+    org.springframework.web.client.RestTemplate: DEBUG
+    root: INFO
