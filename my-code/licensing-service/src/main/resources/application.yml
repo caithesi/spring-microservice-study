@@ -4,4 +4,4 @@ spring:
   profiles:
     active: dev
   config:
-    import: optional:configserver:https://sict-ostock-licensing-service.onrender.com
+    import: optional:configserver:${config_import:https://sict-ostock-licensing-service.onrender.com}
