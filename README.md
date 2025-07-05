@@ -19,3 +19,6 @@ or can config to run temporary
 podman run -d -p 8200:8200 --name vault -e 'VAULT_DEV_ROOT_TOKEN_ID=myroot' -e 'VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200' hashicorp/vault
 
 http://0.0.0.0:8200/ui/vault/auth**
+
+## example source : https://github.com/carnellj/native_cloud_apps
+## example code that modified alot https://github.com/wuyichen24/spring-microservices-in-action/tree/master
