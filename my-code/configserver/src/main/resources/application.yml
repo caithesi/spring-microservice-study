@@ -18,6 +18,8 @@ spring:
           kv-version: 2
 server:
   port: 8071
+encrypt:
+  key: ${CONFIG_SERVER_SYMMETRIC_KEY:secretkey}
 logging:
   level:
     org.springframework.cloud.config.server: DEBUG
