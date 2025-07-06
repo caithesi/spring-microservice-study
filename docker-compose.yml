@@ -1,0 +1,23 @@
+services:
+  config-service:
+    image: localhost/caithesi/ostock-config-service:latest
+    container_name: ostock-config-service
+    ports:
+      - "8071:8071"  # Adjust port as needed
+    networks:
+      - ostock-network
+  
+  licensing-service:
+    image: localhost/caithesi/ostock-licensing-service:latest
+    container_name: ostock-licensing-service
+    ports:
+      - "8080:8080"  # Adjust port as needed
+    networks:
+      - ostock-network
+    restart: unless-stopped
+    depends_on:
+      - config-service
+
+networks:
+  ostock-network:
+    driver: bridge

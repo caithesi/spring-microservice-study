@@ -1,0 +1,13 @@
+[Unit]
+Description=Ostock Licensing Service
+Requires=config-service.service
+After=config-service.service
+
+[Container]
+Image=localhost/caithesi/ostock-licensing-service:latest
+PublishPort=8080:8080
+Network=ostock-network
+Exec=always
+
+[Install]
+WantedBy=default.target

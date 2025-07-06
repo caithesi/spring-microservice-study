@@ -1,0 +1,11 @@
+[Unit]
+Description=Ostock Config Service
+
+[Container]
+Image=localhost/caithesi/ostock-config-service:latest
+PublishPort=8071:8071
+Network=systemd-ostock-network
+Exec=always
+
+[Install]
+WantedBy=default.target
