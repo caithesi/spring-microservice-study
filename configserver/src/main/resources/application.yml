@@ -2,9 +2,9 @@ spring:
   application:
     name: config-server
   profiles:
-    active:
-    - native #set the spring profile associated with the backend repository (file system)
-    - vault
+    active: ${SPRING_PROFILES_ACTIVE:native}
+#    - native #set the spring profile associated with the backend repository (file system)
+#    - vault
   cloud:
     config:
       server:
