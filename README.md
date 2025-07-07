@@ -22,6 +22,7 @@ http://0.0.0.0:8200/ui/vault/auth**
 
 ## example source : https://github.com/carnellj/native_cloud_apps
 ## example code that modified alot https://github.com/wuyichen24/spring-microservices-in-action/tree/master
+## example code with docker-compose, built by author ?? https://github.com/ihuaylupo/manning-smia/tree/master
 
 
 ## Spring Microservices - Do with the book Spring Microservices in Action - Second Edition.
