@@ -85,6 +85,8 @@ systemctl --user stop ostock-network.service
 systemctl --user status config-service.service
 systemctl --user start config-service.service
 systemctl --user status licensing-service.service
+
+please bear in mind that you cant run systemd with env var from cli like when run container, consider using podman run when you need to pass env more flexible
 ### to check log
 ## View current logs:
 podman logs <container-name-or-id>
