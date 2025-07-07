@@ -67,3 +67,16 @@ to run with docker, check folder buildscript
 
 ### test
 both my machines are too old, so i use python to test instead, check testing folder, read readme for more information
+
+
+### working with quadlets:
+since my machine is old with limited space, i decided to use podman with quadlets instead of docker and docker-compose
+
+i created a setup-quadlets.sh script to create systemd service that can be used to start container
+
+after run script, or you can run systemctl --user daemon-reload by yourself, just to be sure to check:
+        if run under rootless user, check $HOME/.config/containers/systemd
+        run systemctl --user list-unit-files | grep <service name>
+
+to start service  systemctl --user start ostock-network.service, please bear in mind that this
+check sevice status systemctl --user status ostock-network.service
