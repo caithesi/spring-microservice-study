@@ -8,4 +8,5 @@ Network=ostock-network
 Exec=always
 
 [Install]
-WantedBy=default.target
+# WantedBy=default.target
+# Commented out to prevent auto-start on boot
