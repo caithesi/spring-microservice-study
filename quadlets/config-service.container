@@ -1,5 +1,7 @@
 [Unit]
 Description=Ostock Config Service
+After=ostock-network.service
+Requires=ostock-network.service
 
 [Container]
 Image=localhost/caithesi/ostock-config-service:latest

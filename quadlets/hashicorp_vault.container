@@ -1,0 +1,11 @@
+[Unit]
+Description=Ostock Hashicorp Vault Service
+
+[Container]
+Image=docker.io/
+PublishPort=8071:8071
+Network=ostock-network
+Exec=always
+
+[Install]
+WantedBy=default.target

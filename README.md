@@ -81,8 +81,10 @@ after run script, or you can run systemctl --user daemon-reload by yourself, jus
 
 to start service  systemctl --user start ostock-network.service, please bear in mind that this
 check sevice status systemctl --user status ostock-network.service
-
-
+systemctl --user stop ostock-network.service
+systemctl --user status config-service.service
+systemctl --user start config-service.service
+systemctl --user status licensing-service.service
 ### to check log
 ## View current logs:
 podman logs <container-name-or-id>
