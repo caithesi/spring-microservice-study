@@ -5,10 +5,10 @@ spring:
     admin:
       context-path: /admin
 server:
-  port: 8070
+  port: ${EUREKA_PORT:8070}
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${EUREKA_HOST:localhost}
   client:
     registerWithEureka: false
     fetchRegistry: false
