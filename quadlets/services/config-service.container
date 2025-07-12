@@ -8,6 +8,7 @@ Image=localhost/caithesi/ostock-config-service:latest
 PublishPort=8071:8071
 Network=ostock-network
 Exec=always
+ContainerName=config-service
 
 [Install]
 # WantedBy=default.target

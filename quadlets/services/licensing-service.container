@@ -8,6 +8,8 @@ Image=localhost/caithesi/ostock-licensing-service:latest
 PublishPort=8080:8080
 Network=ostock-network
 Exec=always
+ContainerName=licensing-service
+Environment=CONFIG_SERVER_URI=http://config-service:8071
 
 [Install]
 # WantedBy=default.target

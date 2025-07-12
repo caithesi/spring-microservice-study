@@ -78,6 +78,7 @@ i created a setup-quadlets.sh script to create systemd service that can be used 
 after run script, or you can run systemctl --user daemon-reload by yourself, just to be sure to check:
         if run under rootless user, check $HOME/.config/containers/systemd
         run systemctl --user list-unit-files | grep <service name>
+        journalctl --user -u eureka-service.service -f
 
 to start service  systemctl --user start ostock-network.service, please bear in mind that this
 check sevice status systemctl --user status ostock-network.service
