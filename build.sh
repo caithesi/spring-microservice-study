@@ -7,6 +7,7 @@ set -e
 directories=(
     "licensing-service"
     "configserver"
+    "eurekaserver"
 )
 
 # Function to build in a directory

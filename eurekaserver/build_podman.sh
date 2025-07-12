@@ -8,7 +8,7 @@ set -e
 # Only proceed to Docker steps if Maven build succeeded
 echo "Maven build successful. Proceeding with Docker build..."
 
-podman build  -t caithesi/ostock-config-service . \
+podman build  -t caithesi/eureka-service . \
   --build-arg  FINAL_JAR_NAME=app
 
 
