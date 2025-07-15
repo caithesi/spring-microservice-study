@@ -11,3 +11,16 @@
 # you can check some resource here
 
 # https://sict-ostock-licensing-service.onrender.com/licensing-service/dev
+
+# config using Configuration Files with Profile Groups
+
+How This Works
+
+Profile Groups: Each service defines its own profile groups in its base configuration file
+Automatic Resolution: When a service requests configuration:
+
+Default profile → gets base service config + profiles defined in default group
+Dev profile → gets base service config + dev overrides + profiles defined in dev group
+
+
+Minimal Client Changes: Clients only need to specify their application name and active profile

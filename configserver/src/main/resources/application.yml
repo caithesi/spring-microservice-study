@@ -8,6 +8,7 @@ spring:
   cloud:
     config:
       server:
+        profile-separator: ','
         #Local configuration: this locations can either of classpath or locations in the file system
         native:
           #read from a specific file system folder
