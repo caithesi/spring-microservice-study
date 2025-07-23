@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    group:
+      default: eureka
+      dev: eureka,eureka-dev
