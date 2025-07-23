@@ -4,6 +4,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import com.optimagrowth.license.config.ServiceConfig;
+import com.optimagrowth.license.model.Organization;
 import com.optimagrowth.license.repository.LicenseRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,24 @@ public class LicenseService {
 		responseMessage = String.format(messages.getMessage("license.delete.message", null, null),licenseId, organizationId);
 		return responseMessage;
 
+	}
+
+	public License getLicense(String organizationId, String licenseId, String clientType) {
+		License license = new License();
+		license.setOrganizationId(organizationId);
+		license.setLicenseId(licenseId);
+		Organization organization = retrieveOrganizationInfo(organizationId, clientType);
+		if (organization != null) {
+			license.setOrganizationName(organization.getName());
+			license.setContactName(organization.getContactName());
+			license.setContactEmail(organization.getContactEmail());
+			license.setContactPhone(organization.getContactPhone());
+		}
+		return license;
+	}
+
+	public Organization retrieveOrganizationInfo(String organizationId,
+												 String clientType){
+		return new Organization();
 	}
 }
