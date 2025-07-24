@@ -14,6 +14,8 @@ import java.util.List;
 public class OrganizationDiscoveryClient {
     private final DiscoveryClient discoveryClient;
 
+    private final RestTemplate restTemplate;
+
     /**
      * call getOrganization using {@link DiscoveryClient}
      * <br/ >
@@ -37,6 +39,12 @@ public class OrganizationDiscoveryClient {
 
         String serviceUri = String.format("%s/v1/organization/%s", instances.getFirst().getUri().toString(), organizationId);
         Organization restExchange = restTemplate.getForObject(serviceUri, Organization.class, organizationId);
+        return restExchange;
+    }
+
+    public Organization getOrganizationByRest(String organizationId) {
+        Organization restExchange = restTemplate.getForObject("http://organization-service/v1/organization/{organizationId}", Organization.class, organizationId);
+
         return restExchange;
     }
 }

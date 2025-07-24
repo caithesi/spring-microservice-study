@@ -20,4 +20,9 @@ public class CallToOrganization {
     public ResponseEntity<Organization> byDiscoveryClient(@PathVariable("organizationId") String organizationId) {
         return ResponseEntity.ok(organizationDiscoveryClient.getOrganization(organizationId));
     }
+
+    @GetMapping("/rest-template")
+    public ResponseEntity<Organization> byRestTemplate(@PathVariable("organizationId") String organizationId) {
+        return ResponseEntity.ok(organizationDiscoveryClient.getOrganization(organizationId));
+    }
 }
