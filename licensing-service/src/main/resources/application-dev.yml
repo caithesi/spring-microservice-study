@@ -1,0 +1,23 @@
+logging:
+  level:
+    # Eureka client registry operations
+    com.netflix.discovery.DiscoveryClient: DEBUG
+    com.netflix.eureka.registry: DEBUG
+
+    # Load balancer operations
+    com.netflix.loadbalancer: DEBUG
+    org.springframework.cloud.netflix.ribbon: DEBUG
+    org.springframework.cloud.loadbalancer: DEBUG
+
+    # RestTemplate with load balancer
+    org.springframework.web.client.RestTemplate: DEBUG
+    org.springframework.cloud.client.loadbalancer: DEBUG
+
+    # Eureka instance registry updates
+    com.netflix.eureka.lease: DEBUG
+
+    # HTTP client used by Eureka
+    com.netflix.eureka.transport: DEBUG
+
+    # Circuit breaker if using Hystrix
+    com.netflix.hystrix: DEBUG
