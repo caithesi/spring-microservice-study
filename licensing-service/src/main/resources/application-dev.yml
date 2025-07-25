@@ -21,3 +21,9 @@ logging:
 
     # Circuit breaker if using Hystrix
     com.netflix.hystrix: DEBUG
+
+    org.apache.http.wire: DEBUG  # if using Apache HttpClient
+    okhttp3: DEBUG  # if using OkHttp
+    org.springframework.cloud.openfeign: DEBUG  # if using Feign
+
+    com.netflix.discovery: DEBUG

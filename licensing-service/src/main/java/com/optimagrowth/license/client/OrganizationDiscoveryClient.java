@@ -2,6 +2,9 @@ package com.optimagrowth.license.client;
 
 import com.optimagrowth.license.model.Organization;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.stereotype.Component;
@@ -11,11 +14,12 @@ import java.util.List;
 
 @Component
 @AllArgsConstructor
+@Slf4j
 public class OrganizationDiscoveryClient {
     private final DiscoveryClient discoveryClient;
 
+    private final RestTemplate restTemplateCustom;
     private final RestTemplate restTemplate;
-
     /**
      * call getOrganization using {@link DiscoveryClient}
      * <br/ >
@@ -36,7 +40,7 @@ public class OrganizationDiscoveryClient {
         if (instances.isEmpty()) {
             return null;
         }
-
+        log.info("found {} instance", instances.size());
         String serviceUri = String.format("%s/v1/organization/%s", instances.getFirst().getUri().toString(), organizationId);
         Organization restExchange = restTemplate.getForObject(serviceUri, Organization.class, organizationId);
         return restExchange;
@@ -44,7 +48,13 @@ public class OrganizationDiscoveryClient {
 
     public Organization getOrganizationByRest(String organizationId) {
         Organization restExchange = restTemplate.getForObject("http://organization-service/v1/organization/{organizationId}", Organization.class, organizationId);
-
+        for (int i = 0; i < 100; i++) {
+            Thread.ofVirtual().start(() -> {
+                var x = restTemplateCustom.getForObject("http://organization-service/v1/organization/{organizationId}", Organization.class, organizationId);
+                assert x != null;
+                log.info(x.getContactEmail());
+            });
+        }
         return restExchange;
     }
 }

@@ -23,6 +23,6 @@ public class CallToOrganization {
 
     @GetMapping("/rest-template")
     public ResponseEntity<Organization> byRestTemplate(@PathVariable("organizationId") String organizationId) {
-        return ResponseEntity.ok(organizationDiscoveryClient.getOrganization(organizationId));
+        return ResponseEntity.ok(organizationDiscoveryClient.getOrganizationByRest(organizationId));
     }
 }
