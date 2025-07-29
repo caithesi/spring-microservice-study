@@ -20,6 +20,7 @@ public class OrganizationDiscoveryClient {
 
     private final RestTemplate restTemplateCustom;
     private final RestTemplate restTemplate;
+    private final OrganizationFeign organizationFeign;
     /**
      * call getOrganization using {@link DiscoveryClient}
      * <br/ >
@@ -51,6 +52,18 @@ public class OrganizationDiscoveryClient {
         for (int i = 0; i < 100; i++) {
             Thread.ofVirtual().start(() -> {
                 var x = restTemplateCustom.getForObject("http://organization-service/v1/organization/{organizationId}", Organization.class, organizationId);
+                assert x != null;
+                log.info(x.getContactEmail());
+            });
+        }
+        return restExchange;
+    }
+
+    public Organization getOrganizationByFeign(String organizationId) {
+        Organization restExchange = organizationFeign.getOrganizationById( organizationId);
+        for (int i = 0; i < 100; i++) {
+            Thread.ofVirtual().start(() -> {
+                var x = organizationFeign.getOrganizationById( organizationId);
                 assert x != null;
                 log.info(x.getContactEmail());
             });

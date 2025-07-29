@@ -25,4 +25,9 @@ public class CallToOrganization {
     public ResponseEntity<Organization> byRestTemplate(@PathVariable("organizationId") String organizationId) {
         return ResponseEntity.ok(organizationDiscoveryClient.getOrganizationByRest(organizationId));
     }
+
+    @GetMapping("/feign")
+    public ResponseEntity<Organization> byFeign(@PathVariable("organizationId") String organizationId) {
+        return ResponseEntity.ok(organizationDiscoveryClient.getOrganizationByRest(organizationId));
+    }
 }
