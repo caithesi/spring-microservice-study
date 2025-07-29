@@ -1,0 +1,31 @@
+eureka:
+  client:
+    enabled: false
+spring:
+  cloud:
+    discovery:
+      client:
+        simple:
+          instances:
+            organization-service[0]:
+              uri: http://localhost:8081
+            organization-service[1]:
+              uri: http://localhost:8082
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    database: POSTGRESQL
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: none
+    show-sql: 'true'
+  datasource:
+    testWhileIdle: 'true'
+    validationQuery: SELECT 1
+    platform: postgres
+    username: postgres
+    url: jdbc:postgresql://database:5432/ostock_dev
+    password: 123456
+  database:
+    driverClassName: org.postgresql.Driver
