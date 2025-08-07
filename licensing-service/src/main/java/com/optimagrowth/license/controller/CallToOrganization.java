@@ -28,6 +28,6 @@ public class CallToOrganization {
 
     @GetMapping("/feign")
     public ResponseEntity<Organization> byFeign(@PathVariable("organizationId") String organizationId) {
-        return ResponseEntity.ok(organizationDiscoveryClient.getOrganizationByRest(organizationId));
+        return ResponseEntity.ok(organizationDiscoveryClient.getOrganizationByFeign(organizationId));
     }
 }
