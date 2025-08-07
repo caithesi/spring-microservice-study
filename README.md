@@ -93,3 +93,5 @@ please bear in mind that you cant run systemd with env var from cli like when ru
 podman logs <container-name-or-id>
 ## Follow logs in real-time (like tail -f):
 podman logs -f <container-name-or-id>
+
+mvn spring-boot:run -Dspring-boot.run.arguments="--mock.rest.delay=5000 --another.prop=value"
