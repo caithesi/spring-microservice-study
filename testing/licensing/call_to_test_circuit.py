@@ -3,7 +3,7 @@ import aiohttp
 import time
 
 URL = "http://localhost:8080/v1/test-resilience4j/test-circuit-breaker-mock-db-call/true"
-NUM_REQUESTS = 100
+NUM_REQUESTS = 500
 CONCURRENT_LIMIT = 20  # max concurrent requests at once
 
 sem = asyncio.Semaphore(CONCURRENT_LIMIT)
@@ -15,7 +15,7 @@ async def fetch(session, i):
             async with session.get(URL, timeout=10) as response:
                 duration = time.time() - start
                 text = await response.text()
-                return f"[{i:03}] ✅ {response.status} in {duration:.2f}s"
+                return f"[{i:03}] ✅ {response.status} in {duration:.2f}s with resp {text}"
             return None
         except Exception as e:
             duration = time.time() - start

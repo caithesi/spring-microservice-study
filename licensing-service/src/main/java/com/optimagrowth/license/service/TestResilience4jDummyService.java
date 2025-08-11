@@ -8,7 +8,8 @@ import java.util.concurrent.TimeoutException;
 @Service
 public class TestResilience4jDummyService {
 
-    @CircuitBreaker(name = "licenseService")
+    @CircuitBreaker(name = "licenseService",
+    fallbackMethod = "testCircuitBreakerMockDBCallFallback")
     public String testCircuitBreakerMockDBCall(boolean shouldFail){
         if (shouldFail){
             try {
@@ -19,5 +20,9 @@ public class TestResilience4jDummyService {
             }
         }
         return "by some magic, this success";
+    }
+
+    private String testCircuitBreakerMockDBCallFallback(boolean shouldFail, Throwable t){
+        return "a";
     }
 }
