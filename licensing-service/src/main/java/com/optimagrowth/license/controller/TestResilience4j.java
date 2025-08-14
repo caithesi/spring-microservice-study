@@ -18,4 +18,15 @@ public class TestResilience4j {
     public ResponseEntity<String> testCircuitBreakerMockDBCall(@PathVariable boolean fail) {
         return ResponseEntity.ok(testResilience4jDummyService.testCircuitBreakerMockDBCall(fail));
     }
+
+    /**
+     * this aim to test when @CircuitBreaker is declared at class level instead of function level
+     *
+     * @param fail should fail or not
+     * @return just a dummy string
+     */
+    @GetMapping("/test-circuit-breaker-on-class-mock-call/{fail}")
+    public ResponseEntity<String> testCircuitBreakerMockOnClass(@PathVariable boolean fail) {
+        return ResponseEntity.ok(testResilience4jDummyService.testCircuitBreakerMockOnClass(fail));
+    }
 }
