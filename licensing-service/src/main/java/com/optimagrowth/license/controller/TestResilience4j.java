@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestResilience4j {
     private final TestResilience4jDummyService testResilience4jDummyService;
 
-    @GetMapping("/test-circuit-breaker-mock-db-call/{fail}")
-    public ResponseEntity<String> testCircuitBreakerMockDBCall(@PathVariable boolean fail) {
-        return ResponseEntity.ok(testResilience4jDummyService.testCircuitBreakerMockDBCall(fail));
+    @GetMapping("/test-circuit-breaker-on-function-mock-call/{fail}")
+    public ResponseEntity<String> testCircuitBreakerMockOnFunction(@PathVariable boolean fail) {
+        return ResponseEntity.ok(testResilience4jDummyService.testCircuitBreakerMockOnFunction(fail));
     }
 
     /**

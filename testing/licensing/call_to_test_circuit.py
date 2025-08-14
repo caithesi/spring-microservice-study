@@ -5,7 +5,7 @@ import time
 
 
 URLS = {
-    "mock_on function": "http://localhost:8080/v1/test-resilience4j/test-circuit-breaker-mock-db-call",
+    "mock_on function": "http://localhost:8080/v1/test-resilience4j/test-circuit-breaker-on-function-mock-call",
     "mock_on_class": "http://localhost:8080/v1/test-resilience4j/test-circuit-breaker-on-class-mock-call"
 }
 

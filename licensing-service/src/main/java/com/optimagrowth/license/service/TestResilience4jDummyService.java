@@ -10,8 +10,8 @@ import java.util.concurrent.TimeoutException;
 public class TestResilience4jDummyService {
 
     @CircuitBreaker(name = "licenseService",
-            fallbackMethod = "testCircuitBreakerMockDBCallFallback")
-    public String testCircuitBreakerMockDBCall(boolean shouldFail) {
+            fallbackMethod = "testCircuitBreakerMockOnFunctionFallback")
+    public String testCircuitBreakerMockOnFunction(boolean shouldFail) {
         if (shouldFail) {
             try {
                 Thread.sleep(5000);
@@ -36,7 +36,7 @@ public class TestResilience4jDummyService {
     }
 
 
-    private String testCircuitBreakerMockDBCallFallback(boolean shouldFail, Throwable t) {
+    private String testCircuitBreakerMockOnFunction(boolean shouldFail, Throwable t) {
         return "a";
     }
 }
