@@ -1,0 +1,15 @@
+resilience4j.bulkhead:
+  instances:
+    mockBulkheadSemaphore:
+      maxWaitDuration: 10ms
+      maxConcurrentCalls: 20
+
+
+resilience4j:
+  thread-pool-bulkhead:
+    instances:
+      mockBulkheadThreadPool:
+        maxThreadPoolSize: 1
+        coreThreadPoolSize: 1
+        queueCapacity: 1
+        keepAliveDuration: 20ms
