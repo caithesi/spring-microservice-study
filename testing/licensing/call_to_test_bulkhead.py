@@ -5,8 +5,10 @@ import time
 
 
 URLS = {
-    "thread_pool_mock_on_function": "http://localhost:8080/v1/test-resilience4j/test-threadpool-bulkhead-on-function-mock-call",
-    "thread_pool_mock_on_class": "http://localhost:8080/v1/test-resilience4j/test-threadpool-bulkhead-on-class-mock-call"
+    "thread_pool_mock_on_function": "test-threadpool-bulkhead-on-function-mock-call",
+    "thread_pool_mock_on_class": "test-threadpool-bulkhead-on-class-mock-call",
+    "semaphore_mock_on_function": "test-semaphore-bulkhead-on-function-mock-call",
+    "semaphore_mock_on_class": "test-semaphore-bulkhead-on-class-mock-call"
 }
 
 NUM_REQUESTS = 500
@@ -33,12 +35,11 @@ async def fetch(session, i, URL):
 async def main():
     parser = argparse.ArgumentParser(description="Async HTTP load tester")
     parser.add_argument("-u", "--url_key", required=True, choices=URLS.keys(), help="Base URL key")
-    parser.add_argument("-s", "--sleep", required=True,
-                        help="how long will the request require")
+    parser.add_argument("-s", "--sleep", required=True, help="how long will the request require")
     # parser.add_argument("-n", "--num_requests", type=int, default=NUM_REQUESTS, help="Number of requests to send")
     # parser.add_argument("-c", "--concurrent", type=int, default=CONCURRENT_LIMIT, help="Max concurrent requests")
     args = parser.parse_args()
-    path = f"{URLS[args.url_key]}/{args.sleep}"
+    path = f"http://localhost:8080/v1/test-resilience4j/{URLS[args.url_key]}/{args.sleep}"
 
     async with aiohttp.ClientSession() as session:
         tasks = [fetch(session, i, path) for i in range(NUM_REQUESTS)]
