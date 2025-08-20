@@ -3,6 +3,7 @@ package com.optimagrowth.license.controller;
 import com.optimagrowth.license.service.TestResilience4jDummyService;
 import com.optimagrowth.license.service.TestResilience4jSemaphoreBulkheadDummyService;
 import com.optimagrowth.license.service.TestResilience4jThreadPoolBulkheadDummyService;
+import com.optimagrowth.license.service.TestResilience4jTwoTypeBulkheadDummyService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +20,7 @@ public class TestResilience4j {
     private final TestResilience4jDummyService testResilience4jDummyService;
     private final TestResilience4jThreadPoolBulkheadDummyService testResilience4jThreadPoolBulkheadDummyService;
     private final TestResilience4jSemaphoreBulkheadDummyService testResilience4jSemaphoreBulkheadDummyService;
+    private final TestResilience4jTwoTypeBulkheadDummyService testResilience4jTwoTypeBulkheadDummyService;
 
     @GetMapping("/test-circuit-breaker-on-function-mock-call/{fail}")
     public ResponseEntity<String> testCircuitBreakerMockOnFunction(@PathVariable boolean fail) {
@@ -57,6 +59,12 @@ public class TestResilience4j {
     @GetMapping("/test-semaphore-bulkhead-on-class-mock-call/{sleep}")
     public ResponseEntity<String> testSemaphoreBulkheadMockOnClass(@PathVariable long sleep) throws ExecutionException, InterruptedException {
         String result = testResilience4jSemaphoreBulkheadDummyService.testBulkheadMockOnClass(sleep);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/test-two-type-bulkhead-on-function-mock-call/{sleep}")
+    public ResponseEntity<String> testTwoTypeBulkheadMockOnFunction(@PathVariable long sleep) throws ExecutionException, InterruptedException {
+        String result = testResilience4jTwoTypeBulkheadDummyService.testBulkheadMockOnFunction(sleep);
         return ResponseEntity.ok(result);
     }
 }

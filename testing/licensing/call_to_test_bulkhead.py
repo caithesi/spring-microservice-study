@@ -8,7 +8,9 @@ URLS = {
     "thread_pool_mock_on_function": "test-threadpool-bulkhead-on-function-mock-call",
     "thread_pool_mock_on_class": "test-threadpool-bulkhead-on-class-mock-call",
     "semaphore_mock_on_function": "test-semaphore-bulkhead-on-function-mock-call",
-    "semaphore_mock_on_class": "test-semaphore-bulkhead-on-class-mock-call"
+    "semaphore_mock_on_class": "test-semaphore-bulkhead-on-class-mock-call",
+    "two_type_mock_on_class": "test-two-type-bulkhead-on-function-mock-call"
+
 }
 
 NUM_REQUESTS = 500
