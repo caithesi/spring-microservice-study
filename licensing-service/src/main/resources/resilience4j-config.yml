@@ -3,9 +3,19 @@ resilience4j.bulkhead:
     mockBulkheadSemaphore:
       maxWaitDuration: 10ms
       maxConcurrentCalls: 20
+    testWithRetry:
+      maxWaitDuration: 10ms
+      maxConcurrentCalls: 1
 
 
 resilience4j:
+  retry:
+    instances:
+      testWithBulkHead:
+        maxRetryAttempts: 5
+        retry-exceptions:
+          # do not do this on real code
+          - io.github.resilience4j.bulkhead.BulkheadFullException
   thread-pool-bulkhead:
     instances:
       mockBulkheadThreadPool:
